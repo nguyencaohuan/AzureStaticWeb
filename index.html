@@ -21,16 +21,22 @@
   -o-background-size: cover;
   background-size: cover;
     }
-    body{
-      
-    }
+   
   </style>
 </head>
 
+
+
+
+
 <body>
   <div id="root"></div>
+
+<button id="btnSound" onclick="soundOnOff()" style="position: fixed;top: 10px;left: 10px;font-size: 18px;">Sound On</button>
+
   <script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
   <script>
+    var isSoundOn = false;
     const root = document.getElementById('root')
     const fireworks = new Fireworks(root,{
       hue: {
@@ -46,7 +52,7 @@
     speed: 9,
     acceleration: 1.01,
     friction: 0.95,
-    gravity: 1.1,
+    gravity: 3,
     particles: 100,
     trace: 5,
     explosion: 7,
@@ -67,7 +73,7 @@
         visible: false
     },
     sound: {
-        enabled: true,
+        enabled: isSoundOn,
         files: [
             "https://fireworks.js.org/sounds/explosion0.mp3",
             "https://fireworks.js.org/sounds/explosion1.mp3",
@@ -86,11 +92,18 @@
       
       
       })
-
-    
-
-
     fireworks.start()
+
+    function soundOnOff(){
+      isSoundOn = !isSoundOn;
+      fireworks.setOptions({ sound: { enabled: isSoundOn}});
+      if (isSoundOn) {
+        document.getElementById("btnSound").innerHTML = "Sound Off";
+      }else{
+        document.getElementById("btnSound").innerHTML = "Sound On";
+      }
+    }
+     
   </script>
 </body>
 
