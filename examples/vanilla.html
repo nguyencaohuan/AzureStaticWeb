@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fireworks.js</title>
+  <style>
+    #root {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      background: #000;
+     
+      background: url(bg/lanmark81.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    }
+    body{
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/fireworks-js@latest/dist/fireworks.js"></script>
+  <script>
+    const root = document.getElementById('root')
+    const fireworks = new Fireworks(root,{
+      hue: {
+        min: 0,
+        max: 360
+    },
+    delay: {
+        min: 10,
+        max: 30
+    },
+    rocketsPoint: 50,
+    opacity: 0.4,
+    speed: 9,
+    acceleration: 1.01,
+    friction: 0.95,
+    gravity: 1.1,
+    particles: 100,
+    trace: 5,
+    explosion: 7,
+    autoresize: true,
+    brightness: {
+        min: 30,
+        max: 80,
+        decay: {
+            min: 0.015,
+            max: 0.03
+        }
+    },
+    boundaries: {
+        x: 50,
+        y: 50,
+        width: 1536,
+        height: 554,
+        visible: false
+    },
+    sound: {
+        enabled: true,
+        files: [
+            "https://fireworks.js.org/sounds/explosion0.mp3",
+            "https://fireworks.js.org/sounds/explosion1.mp3",
+            "https://fireworks.js.org/sounds/explosion2.mp3"
+        ],
+        volume: {
+            min: 5,
+            max: 50
+        }
+    },
+    mouse: {
+        click: true,
+        move: false,
+        max: 5
+    }
+      
+      
+      })
+
+    
+
+
+    fireworks.start()
+  </script>
+</body>
+
+</html>
